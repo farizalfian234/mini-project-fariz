@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface AccountService {
     Account addAccount(Account account);
+    Account saveAccount(Account account);
     Page<Account> getAccount(Pageable pageable, AccountDTO accountDTO);
     Account getAccountByNumber(String number);
     Account getAccountByNumberAndPassword(String number, String password);

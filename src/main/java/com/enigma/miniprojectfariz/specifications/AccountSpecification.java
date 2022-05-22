@@ -2,12 +2,10 @@ package com.enigma.miniprojectfariz.specifications;
 
 import com.enigma.miniprojectfariz.dto.AccountDTO;
 import com.enigma.miniprojectfariz.entities.Account;
+import com.enigma.miniprojectfariz.entities.Bank;
 import org.springframework.data.jpa.domain.Specification;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -18,6 +16,13 @@ public class AccountSpecification {
             List<Predicate> predicates =new ArrayList<>();
             @Override
             public Predicate toPredicate(Root<Account> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                if (accountDTO.getBank().getName()!= null){
+                    Join<Account, Bank> join = root.join("bank", JoinType.INNER);
+                    join.on(criteriaBuilder.like(join.get("name"), "%"+accountDTO.getBank().getName()));
+                    Predicate accountBankPredicate = join.getOn();
+                    predicates.add(accountBankPredicate);
+                }
+
                 if (accountDTO.getNumber()!=null) {
                     Predicate accountNumberPredicate = criteriaBuilder.like(criteriaBuilder.lower(root.get("number")),
                             "%" + accountDTO.getNumber().toLowerCase(Locale.ROOT)+"%");

@@ -29,6 +29,11 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    public Account saveAccount(Account account) {
+        return accountRepository.save(account);
+    }
+
+    @Override
     public Page<Account> getAccount(Pageable pageable, AccountDTO accountDTO) {
         Specification<Account> accountSpecification = AccountSpecification.getSpecification(accountDTO);
         return accountRepository.findAll(accountSpecification, pageable);
