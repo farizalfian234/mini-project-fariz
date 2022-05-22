@@ -28,6 +28,6 @@ public class BankController {
                                      @RequestParam(name = "sort", defaultValue = "name") String sort,
                                      @RequestParam(name = "direction", defaultValue = "ASC") Sort.Direction direction) {
         Pageable pageable = PageRequest.of(page, sizePerPage, Sort.by(direction, sort));
-        return bankService.getAllBank(pageable);
+        return bankService.getBank(pageable);
     }
 }

@@ -6,6 +6,6 @@ import org.springframework.data.domain.Pageable;
 
 public interface BankService {
     Bank addBank(Bank bank);
-    Page<Bank> getAllBank(Pageable pageable);
+    Page<Bank> getBank(Pageable pageable);
     Bank getBankByName(String name);
 }

@@ -1,9 +1,11 @@
 package com.enigma.miniprojectfariz.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "account")
@@ -22,6 +24,7 @@ public class Account {
     @JoinColumn(name = "bank_id")
     private Bank bank;
     private String number;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private String name;
     private Double balance;

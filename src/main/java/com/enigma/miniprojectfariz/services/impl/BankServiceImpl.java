@@ -19,7 +19,7 @@ public class BankServiceImpl implements BankService {
     }
 
     @Override
-    public Page<Bank> getAllBank(Pageable pageable) {
+    public Page<Bank> getBank(Pageable pageable) {
         return bankRepository.findAll(pageable);
     }
 
