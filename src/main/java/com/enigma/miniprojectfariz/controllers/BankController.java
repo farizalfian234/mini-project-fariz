@@ -1,6 +1,6 @@
 package com.enigma.miniprojectfariz.controllers;
 
-import com.enigma.miniprojectfariz.URL;
+import com.enigma.miniprojectfariz.constants.URL;
 import com.enigma.miniprojectfariz.entities.Bank;
 import com.enigma.miniprojectfariz.services.BankService;
 import org.springframework.beans.factory.annotation.Autowired;

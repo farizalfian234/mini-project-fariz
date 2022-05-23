@@ -1,4 +1,4 @@
-package com.enigma.miniprojectfariz;
+package com.enigma.miniprojectfariz.constants;
 
 public class URL {
     public static final String BANK = "/banks";

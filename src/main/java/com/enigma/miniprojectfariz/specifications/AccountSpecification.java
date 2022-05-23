@@ -41,7 +41,7 @@ public class AccountSpecification {
                     predicates.add(accountIsDeletedPredicate);
                 }
 
-                Predicate[] arrayPredicate =predicates.toArray(new Predicate[0]);
+                Predicate[] arrayPredicate = predicates.toArray(new Predicate[0]);
                 return criteriaBuilder.and(arrayPredicate);
             }
         };

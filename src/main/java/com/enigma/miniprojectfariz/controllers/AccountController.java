@@ -1,6 +1,6 @@
 package com.enigma.miniprojectfariz.controllers;
 
-import com.enigma.miniprojectfariz.URL;
+import com.enigma.miniprojectfariz.constants.URL;
 import com.enigma.miniprojectfariz.dto.AccountDTO;
 import com.enigma.miniprojectfariz.entities.Account;
 import com.enigma.miniprojectfariz.services.AccountService;
@@ -21,6 +21,18 @@ public class AccountController {
     @PostMapping
     public Account addAccount(@RequestBody Account account) {
         return accountService.addAccount(account);
+    }
+
+    @PutMapping()
+    public Account updateBalance(@RequestBody Account account,
+                                 @RequestParam Double amount,
+                                 @RequestParam String transactionType) {
+        return accountService.updateBalance(account, amount, transactionType);
+    }
+
+    @PutMapping("/delete")
+    public void deleteCustomer(@RequestBody Account account) {
+        accountService.deleteAccount(account);
     }
 
     @GetMapping
