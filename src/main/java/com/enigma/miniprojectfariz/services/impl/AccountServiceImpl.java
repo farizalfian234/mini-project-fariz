@@ -29,6 +29,9 @@ public class AccountServiceImpl implements AccountService {
         if (accountRepository.findAccountByNumber(account.getNumber()).isPresent()) {
             throw new DataAlreadyUsed(String.format(ResponseMessage.DATA_IS_USED));
         }
+        if (account.getBalance()<50000.0) {
+            throw new DataAlreadyUsed(String.format(ResponseMessage.INVALID_AMOUNT));
+        }
         Bank bank = bankService.getBankByName(account.getBank().getName());
         account.setBank(bank);
         return accountRepository.save(account);
